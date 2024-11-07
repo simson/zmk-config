@@ -15,9 +15,8 @@
 #include "french_unicode.dtsi"
 
 #define DEFAULT 0
-#define LOWER  1
-#define RAISE  2
-#define ADJUST 3
+#define RAISE  1
+#define ADJUST 2
 
 /* NOTE: At the time of the creation of this keymap, there are no specified codes for 'eisuu' and 'kana' input in ZMK.
 However, 'LANG1' and 'LANG2' are fully-functioning candidates for 'kana' and 'eisuu' input respectively.
@@ -29,33 +28,17 @@ As such, those are in use within the default layer at this time.*/
 
               default_layer {
  // ---------------------------------------------------------------------------------------------------------------------------------
- // | GRAVE  |   1    |   2    |   3    |   4    |   5    |                                      |   6    |   7    |   8    |   9    |   0    |  DEL   |
- // |  TAB   |   Q    |   W    |   E    |   R    |   T    |                                      |   Y    |   U    |   I    |   O    |   P    |  BSPC  |
- // |  CTRL  |   A    |   S    |   D    |   F    |   G    |                                      |   H    |   J    |   K    |   L    |   ;    |   '    |
- // |  SHIFT |   Z    |   X    |   C    |   V    |   B    |  LBKT  |                    |  RBKT  |   N    |   M    |   ,    |   .    |   /    |  RET   |
- // | ADJUST |  ESC   |  ALT   |  LGUI  | EISUU  | LOWER  | SPACE  |                    |  SPACE | RAISE  |  KANA  |  LEFT  |  DOWN  |  UP    |  RIGHT |
+ // |  &     |   é    |   "    |   '   |   ( |   -    |                                      |   è    |   _    |   ç    |   à    |   )    |   =    |
+ // |  ESC   |   A    |   Z    |   E   |   R |   T    |                                      |   Y    |   U    |   I    |   O    |   P    |  DEL   |
+ // |  TAB   |   A    |   S    |   D   |   F |   G    |                                      |   H    |   J    |   K    |   L    |   M    |  BKSP  |
+ // |  SHIFT |   W    |   X    |   C   |   V |   B    |   N    |                    |   ,    |   ;    |   :    |   !    |   ù    |   UP   |  RET   |
+ // |  CTRL  |  WIN   |  ALT   |  HOME | END | LCYCLE | SPACE  |                    |  SPACE |   ^    |   $    |   *    |  LEFT  |   DOWN |  RIGHT |
                      bindings = <
-       &kp GRAVE  &kp N1  &kp N2   &kp N3   &kp N4    &kp N5                               &kp N6    &kp N7    &kp N8    &kp N9     &kp N0    &kp DEL
-       &kp TAB    &kp Q   &kp W    &kp E    &kp R     &kp T                                &kp Y     &kp U     &kp I     &kp O      &kp P     &kp BSPC
-       &kp LCTRL  &kp A   &kp S    &kp D    &kp F     &kp G                                &kp H     &kp J     &kp K     &kp L      &kp SEMI  &kp SQT
-       &kp LSHFT  &kp Z   &kp X    &kp C    &kp V     &kp B     &kp LBKT         &kp RBKT  &kp N     &kp M     &kp COMMA &kp PERIOD &kp SLASH &kp RET
-       &mo ADJUST &kp ESC &kp LALT &kp LGUI &kp LANG2 &mo LOWER &kp SPACE        &kp SPACE &mo RAISE &kp LANG1 &kp LEFT  &kp DOWN   &kp UP    &kp RIGHT
-                     >;
-              };
-              lower_layer {
- // ---------------------------------------------------------------------------------------------------------------------------------
- // |      |      |      |      |      |      |                                  |      |      |      |      |      |      |
- // |  ~   |  !   |  @   |  #   |  $   |  %   |                                  |  ^   |  &   |  *   |  (   |  )   |      |
- // |      |      |      |      |      |      |                                  |      |  _   |  +   |  {   |  }   | PIPE |
- // |      |      |      |      |      |      |  (   |                    |  )   |      |      |      | HOME | END  |      |
- // |      |      |      |      |      |      |      |                    |      |      |      |      |      |      |      |
-                     bindings = <
-       &trans    &trans   &trans &trans   &trans   &trans                             &trans    &trans    &trans    &trans   &trans   &trans
-       &kp TILDE &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT                          &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &trans
-       &trans    &trans   &trans &trans   &trans   &trans                             &trans    &kp UNDER &kp PLUS  &kp LBRC &kp RBRC &kp PIPE
-       &trans    &trans   &trans &trans   &trans   &trans    &kp LPAR        &kp RPAR &trans    &trans    &trans    &kp HOME &kp END  &trans
-       &trans    &trans   &trans &trans   &trans   &trans    &trans          &trans   &trans    &trans    &trans    &trans   &trans   &trans
-                     >;
+       &kp FR_AMPR  &kp FR_EACU  &kp FR_DQUO &kp FR_QUOT &kp FR_LPRN &kp FR_MINS                             &kp FR_EGRV  &kp FR_UNDS   &kp FR_CCED  &kp FR_AGRV    &kp FR_RPRN  &kp FR_EQL
+       &kp ESC      &kp FR_A     &kp FR_Z    &kp FR_E    &kp FR_R    &kp FR_T                                &kp FR_Y     &kp FR_U      &kp FR_I     &kp FR_O       &kp FR_P     &kp DEL
+       &kp TAB      &kp FR_Q     &kp FR_S    &kp FR_D    &kp FR_F    &kp FR_G                                &kp FR_H     &kp FR_J      &kp FR_K     &kp FR_L       &kp FR_M     &kp BKSP
+       &kp LSHFT    &kp FR_W     &kp FR_X    &kp FR_C    &kp FR_V    &kp FR_B   &kp FR_N         &kp FR_COMM &kp FR_SCLN  &kp FR_COLN   &kp FR_EXLM  &kp FR_UGRV    &kp UP       &kp RET
+       &kp LCTRL    &kp LGUI     &kp LALT    &kp HOME    &kp END     &kp SPACE  &kp SPACE        &kp SPACE   &kp FR_CIRC  &kp FR_DLR    &kp FR_ASTR  &kp LEFT       &kp DOWN     &kp RIGHT >;
               };
               raise_layer {
  // ---------------------------------------------------------------------------------------------------------------------------------
